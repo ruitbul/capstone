@@ -1,10 +1,21 @@
-int grid = 100;
-int margin = 100;
+color[] colArray = {
+  
+  color(255, 255, 255), //white
+  color(200, 5, 20), //red
+  color(55, 188, 25), //green
+  color(15, 35, 250), //blue
+  color(125, 235, 250), //light blue
+  color(240, 245, 15), //yellow
+  color(160, 60, 235), //purple
+};
+
+int grid = 50;
+int margin = 70;
 
 void setup() {
   size(800, 800);
-  //noLoop();
-  frameRate(10);
+  noLoop();
+  //frameRate(10);
 }
 
 void draw() {
@@ -12,25 +23,31 @@ void draw() {
   noFill();
   stroke(255);
   
-  float d = 60;
+  float d = grid* 0.6;
   
-  float x1 = -random(d);
-  float y1 = -random(d);
-  float x2 = -random(d);
-  float y2 = -random(d);
-  float x3 = -random(d);
-  float y3 = -random(d);
-  float x4 = -random(d);
-  float y4 = -random(d);
-  
-    for (int i = margin; i<=width-margin; i+= grid) {
+  for (int i = margin; i<=width-margin; i+= grid) {
     for (int j = margin; j<=height-margin; j+= grid) {
-  
-    strokeWeight(3);
-    pushMatrix();
-    translate(i, j);
-    quad(x1, y1, x2, y2, x3, y3, x4, y4);
-    popMatrix();
+      
+      int colArrayNum = (int)random(7);
+      stroke(colArray[colArrayNum]);
+      strokeWeight(3);     
+      for(int num = 0; num<7; num++){
+      
+      float x1 = -random(d);
+      float y1 = -random(d);
+      float x2 = random(d);
+      float y2 = -random(d);
+      float x3 = random(d);
+      float y3 = random(d);
+      float x4 = -random(d);
+      float y4 = random(d);
+    
+    
+      pushMatrix();
+      translate(i, j);
+      quad(x1, y1, x2, y2, x3, y3, x4, y4);
+      popMatrix();
+      }
     }
   }
 }
